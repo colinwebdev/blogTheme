@@ -1,0 +1,144 @@
+@import url(./scrollBars.css);
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/ms_sans_serif.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Pixelated MS Sans Serif";
+  font-style: normal;
+  font-weight: 700;
+  src: url(./fonts/ms_sans_serif_bold.woff2) format("woff2");
+}
+* {
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #c2c1c2;
+  font-size: 12px;
+  -webkit-font-smoothing: none;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #100114;
+  overflow-y: scroll;
+  padding: 1rem;
+}
+
+aside {
+  width: 300px;
+  z-index: 1;
+  filter: drop-shadow(5px 5px rgba(17, 157, 164, 0.5));
+}
+
+.wrap {
+  display: flex;
+}
+
+.panel {
+  z-index: 5;
+  position: relative;
+}
+.panel .wrap {
+  border: 2px solid #100114;
+  background-color: #e4e4e4;
+  padding: 3px;
+}
+.panel .inner {
+  border: 2px solid #100114;
+  padding: 3px;
+  background-color: #f2ffff;
+  width: 100%;
+}
+.panel.hasTabs {
+  margin-top: -2px;
+}
+
+.panelTabs {
+  margin-top: 10px;
+  z-index: 10;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.panelTabs .title {
+  display: flex;
+  transform: translateY(2px);
+}
+.panelTabs .title p {
+  background-color: #e4e4e4;
+  padding: 2px 5px;
+  width: fit-content;
+  border: 2px solid #100114;
+  border-right: none;
+  border-bottom: none;
+  flex-grow: 1;
+  padding: 0.25rem 0.5rem 0 0.25rem;
+}
+.panelTabs .title::after {
+  background: linear-gradient(45deg, #e4e4e4 43.5%, #100114 43.5%, #100114 calc(43.5% + 2px), transparent calc(43.5% + 2px));
+}
+.panelTabs .bottomTab {
+  background-color: #e4e4e4;
+  height: 1.5rem;
+  flex-grow: 1;
+  margin-top: -15px;
+  border: 2px solid #100114;
+  border-top: none;
+  border-left: none;
+  height: 21px;
+  display: flex;
+  max-width: 50%;
+}
+.panelTabs .bottomTab::before {
+  background: linear-gradient(-135deg, #e4e4e4 40%, #100114 40%, #100114 calc(40% + 2px), transparent calc(40% + 2px));
+  margin-left: -20px;
+  margin-top: 3px;
+}
+.panelTabs .title::after,
+.panelTabs .bottomTab::before {
+  min-height: 100%;
+  width: 20px;
+  display: block;
+  position: relative;
+  content: "";
+}
+.panelTabs .bottomInner {
+  margin: 4px 4px 3px -3px;
+  max-height: 100%;
+  flex-grow: 1;
+  z-index: 5;
+  background-image: radial-gradient(circle at center, rgb(17, 157, 164) 50%, transparent 0);
+  background-size: 0.25rem 0.25rem;
+  background-repeat: round;
+  position: relative;
+  overflow: hidden;
+}
+.panelTabs .bottomInner::after {
+  content: "";
+  min-height: 100%;
+  width: 20px;
+  position: absolute;
+  left: -4px;
+  top: 0;
+  background: linear-gradient(45deg, #e4e4e4 10px, transparent 10px);
+}
+
+.right {
+  width: 200px;
+  margin-left: 5rem;
+}
+.right .panel .titleBar {
+  background-color: rgb(17, 157, 164);
+  color: #f2ffff;
+  padding: 0.15rem 0.25rem;
+  margin-bottom: 0.2rem;
+}
+.right .panel .wrap {
+  display: block;
+}
+
+/*# sourceMappingURL=style.css.map */

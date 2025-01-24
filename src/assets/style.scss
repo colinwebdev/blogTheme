@@ -1,0 +1,182 @@
+@import url(./scrollBars.css);
+
+$black: #100114;
+$pink: #ff1493;
+$teal: rgb(17, 157, 164);
+$purple: #5e2bff;
+$yellow: #ffc857;
+$silver: #c2c1c2;
+$panelBg: #e4e4e4;
+$white: #f2ffff;
+$bw: 2px;
+$border: $bw solid $black;
+
+@font-face {
+    font-family: 'Pixelated MS Sans Serif';
+    font-style: normal;
+    font-weight: 400;
+    src: url(./fonts/ms_sans_serif.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'Pixelated MS Sans Serif';
+    font-style: normal;
+    font-weight: 700;
+    src: url(./fonts/ms_sans_serif_bold.woff2) format('woff2');
+}
+
+* {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+// body {
+//     background-color: #dfdbe5;
+//     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cg fill='%239C92AC' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M0 0h4v4H0V0zm4 4h4v4H4V4z'/%3E%3C/g%3E%3C/svg%3E");
+// }
+
+body {
+    background-color: $silver;
+    // font-family: 'Pixelated MS Sans Serif', Arial;
+    font-size: 12px;
+    -webkit-font-smoothing: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color: $black;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+
+aside {
+    width: 300px;
+    z-index: 1;
+    filter: drop-shadow(5px 5px rgba($teal, 0.5));
+}
+
+.wrap {
+    display: flex;
+
+}
+
+.panel {
+    z-index: 5;
+    position: relative;
+    .wrap {
+        border: $border;
+        background-color: $panelBg;
+        padding: 3px;
+    }
+    .inner {
+        border: $border;
+        padding: 3px;
+        background-color: $white;
+        width: 100%;
+    }
+    &.hasTabs {
+        margin-top: -$bw;
+    }
+}
+
+.panelTabs {
+    margin-top: 10px;
+    z-index: 10;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    .title {
+        display: flex;
+        transform: translateY(2px);
+        p {
+            background-color: $panelBg;
+            padding: 2px 5px;
+            width: fit-content;
+            border: $border;
+            border-right: none;
+            border-bottom: none;
+            flex-grow: 1;
+            padding: .25rem .5rem 0 .25rem;        }
+        &::after {
+            $grad: 43.5%;
+            background: linear-gradient(
+                45deg,
+                $panelBg $grad,
+                $black $grad,
+                $black calc($grad + $bw),
+                transparent calc($grad + $bw)
+            );
+        }
+    }
+    .bottomTab {
+        background-color: $panelBg;
+        height: 1.5rem;
+        flex-grow: 1;
+        margin-top: -15px;
+        border: $border;
+        border-top: none;
+        border-left: none;
+        height: 21px;
+        display: flex;
+        max-width: 50%;
+        &::before {
+            $grad: 40%;
+            background: linear-gradient(
+                -135deg,
+                $panelBg $grad,
+                $black $grad,
+                $black calc($grad + $bw),
+                transparent calc($grad + $bw)
+            );
+            margin-left: -20px;
+            margin-top: calc($bw + 1px);
+        }
+    }
+    .title::after,
+    .bottomTab::before {
+        min-height: 100%;
+        width: 20px;
+        display: block;
+        position: relative;
+        content: '';
+    }
+    .bottomInner {
+        margin: 4px 4px 3px -3px;
+        max-height: 100%;
+        flex-grow: 1;
+        z-index: 5;
+        background-image: radial-gradient(
+            circle at center,
+            $teal 50%,
+            transparent 0
+        );
+        background-size: 0.25rem 0.25rem;
+        background-repeat: round;
+        position: relative;
+        overflow: hidden;
+        &::after {
+            content: '';
+            min-height: 100%;
+            width: 20px;
+            position: absolute;
+            left: -4px;
+            top: 0;
+            background: linear-gradient(45deg, $panelBg 10px, transparent 10px);
+        }
+    }
+}
+
+.right {
+    width: 200px;
+    margin-left: 5rem;
+    .panel {
+        .titleBar {
+            background-color: $teal;
+            color: $white;
+            padding: .15rem .25rem;
+            margin-bottom: .2rem;
+        }
+        .wrap {
+            display: block;
+        }
+    }
+}
