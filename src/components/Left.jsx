@@ -1,13 +1,19 @@
 import Panel from './Panel'
-import PanelTabs from './PanelTabs'
 
 function Left() {
     return (
         <aside>
-            <Panel content={<p>Hello World</p>} />
-            <PanelTabs title={'Longer Title Test Test Test Test'} bottom={true} />
-            <Panel content={<p>Hello World</p>} />
-            <PanelTabs bottom={true} />
+            <nav>
+                <Panel
+                    title={'Getting Around'}
+                    classes={'nav'}
+                    content={<p>Hello World</p>}
+                />
+            </nav>
+            <Panel
+                title={'Longer Title Test Test Test Test'}
+                content={<p>Hello World</p>}
+            />
         </aside>
     )
 }

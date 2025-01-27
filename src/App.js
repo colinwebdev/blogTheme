@@ -8,9 +8,18 @@ function App() {
         <>
             <div className='container'>
                 <Header />
-                <div className='wrap'>
+                <div className='pageWrap'>
                     <Left />
-                    <Main />
+                    <div className='centerOuter'>
+                        <div className='center panel'>
+                            <div className='wrap'>
+                                <div className='inner'>
+                                    <Main />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <Right />
                 </div>
             </div>
