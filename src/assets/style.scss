@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
 
 $black: rgb(16, 1, 20);
-$pink: #ff1493;
+$pink: rgb(255, 20, 147);
 $teal: rgb(17, 157, 164);
 $purple: #5e2bff;
 $yellow: #ffc857;
@@ -11,7 +11,7 @@ $panelBg: #e4e4e4;
 $white: #f2ffff;
 $bw: 1px;
 $border: $bw solid $black;
-$shadow: 5px 5px rgba($teal, 0.5);
+$shadow: 5px 5px rgba($pink, 0.5);
 
 @font-face {
     font-family: 'Pixelated MS Sans Serif';
@@ -32,7 +32,6 @@ $shadow: 5px 5px rgba($teal, 0.5);
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    // border: 1px solid red;
 }
 
 body {
@@ -45,10 +44,18 @@ body {
     padding: 1rem;
 }
 
+a {
+    text-decoration: none;
+    color: $teal;
+    &:hover {
+        text-decoration: underline;
+        color: $purple;
+    }
+}
+
 aside {
     width: 300px;
     z-index: 1;
-    filter: drop-shadow($shadow);
 }
 
 header {
@@ -68,19 +75,25 @@ header {
         line-height: $fontSize;
         text-shadow: 5px 2px $purple, -8px -2px $pink;
         filter: drop-shadow(3px 3px $black) drop-shadow(-3px -3px $black)
-            drop-shadow(1px -1px $black) drop-shadow(-2px 2px $black) drop-shadow(1px 1px $black) drop-shadow(5px 5px 5px rgba($black, .5));
+            drop-shadow(1px -1px $black) drop-shadow(-2px 2px $black)
+            drop-shadow(1px 1px $black)
+            drop-shadow(5px 5px 5px rgba($black, 0.5));
     }
-    h2, h3 {
-         z-index: 10;
-         position: relative;
-         background-color: $silver;
-         width: fit-content;
-         padding: .15rem 1rem .15rem 3rem;
-         position: absolute;
-         right: 0;
-         border: $border;
-         border-right: none;
-         border-radius: 1rem 0 0 1rem;
+    h2,
+    h3 {
+        z-index: 10;
+        position: relative;
+        background-color: $silver;
+        width: fit-content;
+        padding: 0.15rem 1rem 0.15rem 3rem;
+        position: absolute;
+        right: 0;
+        border: $border;
+        border-right: none;
+        border-radius: 1rem 0 0 1rem;
+    }
+    a {
+        color: $purple;
     }
 
     h2 {
@@ -140,12 +153,27 @@ header {
     z-index: 5;
     position: relative;
     margin-bottom: 1rem;
+    box-shadow: $shadow;
     .title {
         background-color: $teal;
         color: $panelBg;
-        text-shadow: 1px 1px $purple;
-        padding: .15rem .25rem;
-        margin-bottom: .25rem;
+        padding: 0.15rem 0.25rem;
+        margin-bottom: 0.25rem;
+        h3 {
+            font-size: 12px;
+            font-weight: normal;
+            text-shadow: 1px 1px $purple;
+        }
+    }
+    &.largeTitle {
+        .title {
+            background-color: $purple;
+            h3 {
+                font-size: 14px;
+                text-transform: uppercase;
+                text-shadow: 1px 1px $pink;
+            }
+        }
     }
     .wrap {
         border: $border;
@@ -160,13 +188,6 @@ header {
     }
     &.hasTabs {
         margin-top: -$bw;
-    }
-}
-
-.panel.nav {
-    .title {
-        background-color: $purple;
-        text-shadow: 1px 1px $black;
     }
 }
 
@@ -285,31 +306,49 @@ header {
 
 .center {
     width: 500px;
-    filter: drop-shadow($shadow);
 }
 
-.centerOuter {
-    position: relative;
-    nav {
-        position: absolute;
-        height: 20px;
-        top: -19px;
-        left: 0.5rem;
-        right: 0.5rem;
-        ul {
-            list-style-type: none;
-            display: flex;
-            gap: 0.5rem;
-        }
+nav {
+    .panel .inner {
+        padding: 0;
+    }
+    ul {
+        list-style-type: none;
         li {
-            background-color: $silver;
-            padding: 0.15rem 0.75rem;
-            border: $border;
-            border-bottom: none;
-            border-radius: 5px 5px 0 0;
+            border-bottom: 1px solid $purple;
+            a {
+                padding: 0.15rem 0.25rem;
+                display: block;
+            }
+            &:last-of-type {
+                border: none;
+            }
             &.active {
-                background-color: $panelBg;
-                z-index: 99;
+                background-color: $silver;
+                position: relative;
+                border-bottom: $border;
+                a {
+                    padding: 0.25rem 0.5rem;
+                }
+                &::after {
+                    content: '';
+                    border: $border;
+                    border-left: none;
+                    border-right: none;
+                    width: 5px;
+                    height: 100%;
+                    position: absolute;
+                    top: -1px;
+                    right: -5px;
+                }
+                a {
+                    background-color: $silver;
+                    transform: translateX(10px);
+                    color: $purple;
+                    &:hover {
+                        color: $black;
+                    }
+                }
             }
         }
     }

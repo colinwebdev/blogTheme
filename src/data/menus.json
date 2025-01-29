@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Home",
+        "url": "/",
+        "order": 0
+    },
+    {
+        "name": "Blog",
+        "url": "/blog",
+        "order": 2
+    },
+    {
+        "name": "Portfolio",
+        "url": "/art",
+        "order": 1
+    },
+    {
+        "name": "About",
+        "url": "/about",
+        "order": 10
+    },
+    {
+        "name": "Contact",
+        "url": "/contact",
+        "order": 9
+    }
+]
