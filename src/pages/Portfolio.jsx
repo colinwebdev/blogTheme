@@ -1,13 +1,12 @@
 import { useEffect, useState, useContext } from 'react'
 import DataContext from '../data/DataContext'
-import { Link } from 'react-router-dom'
 
-function Main() {
+function Portfolio() {
     const { dispatch, currPage } = useContext(DataContext)
     useEffect(() => {
-        dispatch({ type: 'SET_PAGE', payload: 'home' })
+        dispatch({ type: 'SET_PAGE', payload: 'portfolio' })
     }, [])
-    return <div>This is body content</div>
+    return <div>This is the page for art</div>
 }
 
-export default Main
+export default Portfolio

@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux'
 import Main from './pages/Main'
 import Header from './components/Header'
 import Left from './components/Left'
-import Right from './components/Right'
+import Page from './pages/Page'
 import { DataProvider } from './data/DataContext'
+import Portfolio from './pages/Portfolio'
 
 function App() {
     // const { currPageType } = useSelector((state) => state.global)
@@ -25,13 +26,29 @@ function App() {
                                                 path='/'
                                                 element={<Main />}
                                             />
+                                            <Route
+                                                path='/art'
+                                                element={<Portfolio />}
+                                            />
+                                            <Route
+                                                path='/blog'
+                                                element={<Page page='blog' key='blog'/>}
+                                            />
+                                            <Route
+                                                path='/contact'
+                                                element={
+                                                    <Page page='contact' key='contact'/>
+                                                }
+                                            />
+                                            <Route
+                                                path='/about'
+                                                element={<Page page='about' key='about' />}
+                                            />
                                         </Routes>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <Right />
                     </div>
                 </div>
             </Router>

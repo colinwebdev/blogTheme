@@ -27,51 +27,31 @@ $shadow: 5px 5px rgba($pink, 0.5);
     src: url(./fonts/ms_sans_serif_bold.woff2) format('woff2');
 }
 
-* {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 body {
-    background-color: $silver;
-    font-size: 12px;
+    @apply bg-base-200 min-h-screen text-xs text-base-300 overflow-y-scroll p-4;
     -webkit-font-smoothing: none;
     font-family: Arial, Helvetica, sans-serif;
-    color: $black;
-    overflow-y: scroll;
-    padding: 1rem;
 }
 
 a {
-    text-decoration: none;
-    color: $teal;
+    @apply text-secondary;
     &:hover {
-        text-decoration: underline;
-        color: $purple;
+        @apply underline text-accent;
     }
 }
 
 aside {
-    width: 300px;
-    z-index: 1;
+    @apply w-64;
 }
 
 header {
-    height: 200px;
-    position: relative;
+    @apply h-52 relative;
     h1 {
+        @apply absolute text-base-200 top-0 left-4 font-normal;
         $fontSize: 5rem;
-        position: absolute;
         z-index: 99;
-        top: 0;
-        left: 1rem;
         font-family: 'Knewave', serif;
-        font-weight: 400;
-        font-style: normal;
         font-size: $fontSize;
-        color: $silver;
         line-height: $fontSize;
         text-shadow: 5px 2px $purple, -8px -2px $pink;
         filter: drop-shadow(3px 3px $black) drop-shadow(-3px -3px $black)
@@ -81,45 +61,28 @@ header {
     }
     h2,
     h3 {
-        z-index: 10;
-        position: relative;
-        background-color: $silver;
-        width: fit-content;
-        padding: 0.15rem 1rem 0.15rem 3rem;
-        position: absolute;
-        right: 0;
-        border: $border;
-        border-right: none;
-        border-radius: 1rem 0 0 1rem;
+        @apply z-10 absolute bg-base-200 w-fit right-0 border border-base-300 border-r-0;
+        padding: 0.25rem 1rem 0.25rem 3rem;
+        border-radius: 2rem 0 0 2rem;
     }
     a {
-        color: $purple;
+        @apply text-accent;
     }
 
     h2 {
-        bottom: 3rem;
-        font-size: 1.5rem;
+        @apply bottom-12 text-2xl;
     }
     h3 {
-        bottom: 1rem;
+        @apply bottom-4;
     }
     .bg {
+        @apply bg-secondary border border-base-300 relative overflow-hidden w-full;
         $bgDrop: 2rem;
-        background-color: $teal;
-        border: $border;
-        position: relative;
-        overflow: hidden;
         top: $bgDrop;
         height: calc(100% - $bgDrop);
-        width: 100%;
         &::before,
         &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            bottom: 0;
+            @apply inset-0 absolute content-['_'];
         }
         &::before {
             $dot: radial-gradient(closest-side, #444, #fff 75%);
@@ -131,7 +94,6 @@ header {
             mix-blend-mode: darken;
         }
         &::after {
-            // background-color: #075965;
             background-color: #3411a6;
             mix-blend-mode: lighten;
         }
@@ -139,215 +101,65 @@ header {
 }
 
 .container {
-    margin: 0 auto;
-    width: fit-content;
+    @apply my-0 mx-auto w-full;
+    max-width: 1024px;
 }
 
 .pageWrap {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+    @apply flex gap-3 mt-2 mr-2;
 }
 
 .panel {
-    z-index: 5;
-    position: relative;
-    margin-bottom: 1rem;
+    @apply mb-4;
     box-shadow: $shadow;
     .title {
-        background-color: $teal;
-        color: $panelBg;
+        @apply bg-secondary text-neutral mb-1;
         padding: 0.15rem 0.25rem;
-        margin-bottom: 0.25rem;
         h3 {
-            font-size: 12px;
-            font-weight: normal;
+            @apply text-xs;
             text-shadow: 1px 1px $purple;
         }
     }
     &.largeTitle {
         .title {
-            background-color: $purple;
+            @apply bg-accent;
             h3 {
-                font-size: 14px;
-                text-transform: uppercase;
+                @apply text-sm uppercase;
                 text-shadow: 1px 1px $pink;
             }
         }
     }
     .wrap {
-        border: $border;
-        background-color: $panelBg;
-        padding: 3px;
+        @apply border border-base-300 bg-neutral p-1;
     }
     .inner {
-        border: $border;
-        padding: 3px;
-        background-color: $white;
-        width: 100%;
-    }
-    &.hasTabs {
-        margin-top: -$bw;
+        @apply border border-base-300 p-1 bg-base-100 w-full;
     }
 }
 
-.panelTabs {
-    margin-top: 10px;
-    z-index: 10;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    .title {
-        display: flex;
-        transform: translateY(2px);
-        p {
-            background-color: $panelBg;
-            padding: 2px 5px;
-            width: fit-content;
-            border: $border;
-            border-right: none;
-            border-bottom: none;
-            flex-grow: 1;
-            padding: 0.25rem 0.5rem 0 0.25rem;
-        }
-        &::after {
-            $grad: 43.5%;
-            background: linear-gradient(
-                45deg,
-                $panelBg $grad,
-                $black $grad,
-                $black calc($grad + $bw),
-                transparent calc($grad + $bw)
-            );
-        }
-    }
-    .bottomTab {
-        background-color: $panelBg;
-        height: 1.5rem;
-        flex-grow: 1;
-        // margin-top: -15px;
-        margin-top: -11px;
-        border: $border;
-        border-top: none;
-        border-left: none;
-        height: 21px;
-        display: flex;
-        max-width: 50%;
-        &::before {
-            $grad: 40%;
-            background: linear-gradient(
-                -135deg,
-                $panelBg $grad,
-                $black $grad,
-                $black calc($grad + $bw),
-                transparent calc($grad + $bw)
-            );
-            left: -20px;
-            position: absolute;
-            height: 29px;
-            // margin-top: calc($bw + 1px);
-        }
-    }
-    .title::after,
-    .bottomTab::before {
-        min-height: 100%;
-        width: 20px;
-        display: block;
-        position: relative;
-        content: '';
-    }
-    .bottomInner {
-        margin: 2px 4px 3px -22px;
-        max-height: 100%;
-        flex-grow: 1;
-        z-index: 5;
-        background-image: radial-gradient(
-            circle at center,
-            $teal 50%,
-            transparent 0
-        );
-        $bgSize: 5px;
-        background-size: $bgSize $bgSize;
-        background-repeat: round;
-        position: relative;
-        overflow: hidden;
-        &::after {
-            content: '';
-            height: 15px;
-            width: 13px;
-            position: absolute;
-            left: 0;
-            top: 0;
-            $grad: 45%;
-            background: linear-gradient(
-                45deg,
-                $panelBg $grad,
-                transparent $grad
-            );
-            // background-color: #5e2bff;
-        }
-    }
-}
-
-.right {
-    width: 200px;
-    .panel {
-        .titleBar {
-            background-color: $teal;
-            color: $white;
-            padding: 0.15rem 0.25rem;
-            margin-bottom: 0.2rem;
-        }
-        .wrap {
-            display: block;
-        }
-    }
-}
-
-.center {
-    width: 500px;
+.centerOuter {
+    @apply flex-grow;
 }
 
 nav {
     .panel .inner {
-        padding: 0;
+        @apply p-0;
     }
     ul {
-        list-style-type: none;
-        li {
-            border-bottom: 1px solid $purple;
+        @apply divide-y divide-base-300;
+        a {
+            @apply block py-1 px-2;
+        }
+        .active {
+            @apply bg-base-200 relative;
+            &::after {
+                @apply content-['_'] border-y border-base-300 absolute -top-px -bottom-px w-4;
+                right: -5px;
+            }
             a {
-                padding: 0.15rem 0.25rem;
-                display: block;
-            }
-            &:last-of-type {
-                border: none;
-            }
-            &.active {
-                background-color: $silver;
-                position: relative;
-                border-bottom: $border;
-                a {
-                    padding: 0.25rem 0.5rem;
-                }
-                &::after {
-                    content: '';
-                    border: $border;
-                    border-left: none;
-                    border-right: none;
-                    width: 5px;
-                    height: 100%;
-                    position: absolute;
-                    top: -1px;
-                    right: -5px;
-                }
-                a {
-                    background-color: $silver;
-                    transform: translateX(10px);
-                    color: $purple;
-                    &:hover {
-                        color: $black;
-                    }
+                @apply bg-base-200 text-accent translate-x-3;
+                &:hover {
+                    @apply text-base-300;
                 }
             }
         }
